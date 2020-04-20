@@ -1,0 +1,3 @@
+[submodule "meta-example-yocto"]
+	path = meta-example-yocto
+	url = git@github.com:yuravg/meta-example-yocto.git
