@@ -1,0 +1,85 @@
+# Make-file to set layers and build local projects
+#
+# to usage in local builds add:
+# include ../Makefile.build
+
+MAKEFLAGS += --no-print-directory
+
+.PHONY: help
+help:
+	@echo ""
+	@echo "Usage:  make [target(s)]"
+	@echo "where target is any of:"
+	@echo ""
+	@echo "Configure:"
+	@echo " layers -- add layers to Poky(bblayers.conf)"
+	@echo ""
+	@echo "Build:"
+	@echo "  base    -- run bitbake core-image-base(main)"
+	@echo "  minimal -- run bitbake core-image-minimal(debug)"
+	@echo ""
+	@echo "Recipes:"
+	@echo "  recipes_all  -- show all avalable recipes"
+	@echo ""
+	@echo "Work with images:"
+	@echo "  img_list         -- list of all avlable images(default image - last build image)"
+	@echo "  make write2flash -- write default SD-Image to Flash"
+	@echo "  copy2target      -- copy default SD-Image to PATH2COPY='$(PATH2COPY)'"
+	@echo ""
+
+h: help
+.DEFAULT_GOAL := help
+
+current_dir = $(notdir $(shell pwd))
+.PHONY: layers minimal base
+layers:
+	make -C .. layers LBUID_DIR=$(current_dir)
+
+minimal:
+	bitbake core-image-minimal
+
+base:
+	bitbake core-image-base
+
+FIND_MASK = '*raspberrypi3*sdimg'
+DIR2FIND = './tmp/deploy/images/'
+CMD_FIND_LAST = find $(DIR2FIND) -name $(FIND_MASK) -type f 2>/dev/null -printf '%T+ %p\n' |sort -r|head -1|cut -d' ' -f2
+IMG_DEFAULT = $(shell $(CMD_FIND_LAST))
+
+# @echo "  recipes_img -- show recipes of main image(use: IMG another image)"
+# .PHONY: recipes_img recipes_all
+# IMG ?= core-image-base
+# recipes_img:
+# 	@echo "Show image: $(IMG) recipes:"
+# 	bitbake -g $(IMG)
+# 	cat ./recipe-depends.dot | grep -v -e '-native' | grep -v digraph | grep -v -e '-image' | awk '{print $1}' | sort | uniq
+
+.PHONY: recipes_all
+RECIPES_LOG=available-recipes.log
+recipes_all:
+	@echo "Write all avalable recipes to file: $(RECIPES_LOG)"
+	bitbake-layers show-recipes > $(RECIPES_LOG)
+
+.PHONY: img_list
+img_list:
+	@echo "* List of all avalable images *"
+	@echo "Search images by mask: $(FIND_MASK) from $(DIR2FIND):"
+	@find $(DIR2FIND) -name $(FIND_MASK) -type f &&      \
+		(echo "* Last build image(write by default): *"; \
+		 echo $(IMG_DEFAULT)) || true
+
+PATH2SDDISK ?= /dev/sdc
+.PHONY: write2flash
+# image2device(Script to copy a image-file to a block device): https://github.com/yuravg/image2device
+write2flash:
+	@-if [ ! $(call assert-command-present,image2device) ]; then \
+		image2device $(IMG_DEFAULT) $(PATH2SDDISK) || true;\
+		echo "Rin";                                       \
+	  else \
+		echo "Command 'image2device' unavailable, should use 'dd' tools."
+	  fi
+
+PATH2COPY ?= ./
+.PHONY: copy2target
+copy2target:
+	@cp -v $(IMG_DEFAULT) $(PATH2COPY)
