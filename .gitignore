@@ -1,0 +1,11 @@
+[0-9]*/cache/
+[0-9]*/tmp/
+[0-9]*/linux-rpi-*/
+[0-9]*/conf/bblayers.conf
+[0-9]*/conf/templateconf.cfg
+[0-9]*/conf/sanity_info
+[0-9]*/*-depends.dot
+[0-9]*/workspace/
+[0-9]*/bitbake.lock
+[0-9]*/pn-buildlist
+[0-9]*/ln2rootfs
