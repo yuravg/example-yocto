@@ -107,7 +107,6 @@ layers:
 		bitbake-layers add-layer ../meta-openembedded/meta-networking/; \
 		bitbake-layers add-layer ../meta-openembedded/meta-multimedia/; \
 		bitbake-layers add-layer ../meta-raspberrypi/;                  \
-		bitbake-layers add-layer ../meta-96boards/;                     \
 		bitbake-layers add-layer $(META_ROOT)/meta-example-yocto/;      \
 	  fi
 
