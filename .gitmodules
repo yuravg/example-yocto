@@ -1,3 +1,15 @@
 [submodule "meta-example-yocto"]
 	path = meta-example-yocto
 	url = git@github.com:yuravg/meta-example-yocto.git
+[submodule "meta-96boards"]
+	path = meta-96boards
+	url = https://github.com/96boards/meta-96boards.git
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = https://github.com/openembedded/meta-openembedded.git
+[submodule "meta-raspberrypi"]
+	path = meta-raspberrypi
+	url = https://git.yoctoproject.org/git/meta-raspberrypi
+[submodule "poky"]
+	path = poky
+	url = https://git.yoctoproject.org/git/poky
