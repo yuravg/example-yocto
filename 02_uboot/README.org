@@ -1,3 +1,13 @@
+* Info
+
+** Configuration
+- use RPI3
+- use u-boot
+- boot options
+
+* Build Configuration log
+
+#+begin_src text
 Build Configuration:
 BB_VERSION           = "1.42.0"
 BUILD_SYS            = "x86_64-linux"
@@ -17,3 +27,4 @@ meta-networking
 meta-multimedia      = "warrior:a24acf94d48d635eca668ea34598c6e5c857e3f8"
 meta-raspberrypi     = "warrior:5551792e642d6cc32e22dfe6dbfd29ac3e2390cd"
 meta-example-yocto   = "HEAD:a57c57dbc05b438b8f6d9353372abeed86b314c4"
+#+end_src
