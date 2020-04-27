@@ -13,3 +13,6 @@
 [submodule "poky"]
 	path = poky
 	url = https://git.yoctoproject.org/git/poky
+[submodule "meta-linaro"]
+	path = meta-linaro
+	url = git://git.linaro.org/openembedded/meta-linaro.git
