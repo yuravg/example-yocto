@@ -9,3 +9,5 @@
 [0-9]*/bitbake.lock
 [0-9]*/pn-buildlist
 [0-9]*/ln2rootfs
+
+gcc-linaro-*-linux-gnu/
