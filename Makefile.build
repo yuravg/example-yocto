@@ -41,7 +41,7 @@ minimal:
 base:
 	bitbake core-image-base
 
-FIND_MASK = '*raspberrypi3*sdimg'
+FIND_MASK = '*raspberrypi*sdimg'
 DIR2FIND = './tmp/deploy/images/'
 CMD_FIND_LAST = find $(DIR2FIND) -name $(FIND_MASK) -type f 2>/dev/null -printf '%T+ %p\n' |sort -r|head -1|cut -d' ' -f2
 IMG_DEFAULT = $(shell $(CMD_FIND_LAST))
