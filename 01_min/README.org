@@ -1,6 +1,6 @@
 * Info
 
-Minimal configuration for RPI3
+Minimal configuration for RPi3B/RPi3B+
 
 * Build Configuration log
 

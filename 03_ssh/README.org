@@ -1,7 +1,7 @@
 * Info
 
 ** Configuration
-- use RPI3
+- RPi3B/RPi3B+
 - use u-boot
 - boot options
 - added sshd

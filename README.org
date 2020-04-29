@@ -1,4 +1,4 @@
-#+TITLE: Yocto project examples(builds for Raspberry Pi3)
+#+TITLE: Yocto project examples(builds for Raspberry Pi3B/Pi3B+/Pi4B)
 #+AUTHOR: Yuriy Gritsenko
 #+DESCRIPTION: Yocto project examples
 #+LINK: https://github.com/yuravg/example-yocto
@@ -49,9 +49,9 @@ git submodule update --force
 
 * Examples
 
-- [[./01_min/README.org][01_min]] - minimal Raspberry Pi3 (RPI3) configuration.
-- [[./02_uboot/README.org][02_uboot]] - use u-boot
-- [[./03_ssh/README.org][03_ssh]] - use sshd
+- [[./01_min/README.org][01_min]] - minimal Raspberry Pi3 (RPi3B/RPi3B+) configuration.
+- [[./02_uboot/README.org][02_uboot]] - use u-boot RPi3B/RPi3B+
+- [[./03_ssh/README.org][03_ssh]] - use sshd RPi3B/RPi3B+
 - [[./04_middle/README.org][04_middle]] - use sshd, systemd, profile
 
 TODO: add examples: custom_kernel, remote boot, linaro, wifi, use ssh keys, quemu
