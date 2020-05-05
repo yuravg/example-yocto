@@ -52,7 +52,8 @@ git submodule update --force
 - [[./01_min/README.org][01_min]] - minimal Raspberry Pi3 (RPi3B/RPi3B+) configuration.
 - [[./02_uboot/README.org][02_uboot]] - use u-boot RPi3B/RPi3B+
 - [[./03_ssh/README.org][03_ssh]] - use sshd RPi3B/RPi3B+
-- [[./04_middle/README.org][04_middle]] - use sshd, systemd, profile
+- [[./04_middle/README.org][04_middle]] - RPi3B/RPi3B+, use sshd, systemd, profile
+- [[./04_middle_rpi4b/README.org][04_middle_rpi4b]] - RPI4B, use sshd, systemd, profile
 
 TODO: add examples: custom_kernel, remote boot, linaro, wifi, use ssh keys, quemu
 

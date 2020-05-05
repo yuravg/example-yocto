@@ -1,0 +1,46 @@
+* Info
+
+** Configuration
+- RPi4B
+- use u-boot
+- boot options
+- applications: hello-world, nano
+- systemd: turn on eth0 after boot([[https://github.com/yuravg/meta-example-yocto][meta-example-yocto]])
+- systemd: start sshd after boot([[https://github.com/yuravg/meta-example-yocto][meta-example-yocto]])
+- add profile([[https://github.com/yuravg/meta-example-yocto][meta-example-yocto]])
+
+** Usage
+1. RPi4B board
+   - connect Laptop via Ethernet cable
+
+2. Laptop
+   #+begin_src shell-script
+# check RPI board <ip-address>(how get see at 03_ssh/README.org)
+ping <ip-address>
+# run ssh
+sshd root@ip-address
+#+end_src
+
+* Build Configuration log
+
+#+begin_src text
+Build Configuration:
+BB_VERSION           = "1.42.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal"
+TARGET_SYS           = "aarch64-poky-linux"
+MACHINE              = "raspberrypi4-64"
+DISTRO               = "poky"
+DISTRO_VERSION       = "2.7.3"
+TUNE_FEATURES        = "aarch64 cortexa72 crc crypto"
+TARGET_FPU           = ""
+meta
+meta-poky
+meta-yocto-bsp       = "HEAD:f475afc5df0837532dcd0f3a831ddc3aec8941f1"
+meta-oe
+meta-python
+meta-networking
+meta-multimedia      = "HEAD:a24acf94d48d635eca668ea34598c6e5c857e3f8"
+meta-raspberrypi     = "HEAD:5551792e642d6cc32e22dfe6dbfd29ac3e2390cd"
+meta-example-yocto   = "HEAD:897392bac18660274ff5a4c0279900d44302925a"
+#+end_src
